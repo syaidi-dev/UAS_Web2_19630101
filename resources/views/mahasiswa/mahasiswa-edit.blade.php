@@ -8,19 +8,23 @@
             <div class="panel-body">
                 <form action="{{ route('mahasiswa.update', $mahasiswa->id)}}" method="post">
                 @csrf 
-                
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 col-form-label">Nama Mahasiswa</label>
+                        <div class="col-sm-3">
+                        <select class="form-control" name="user_id" id="user_id">
+                        <option value ="" disable selected >--Pilih Nama Mahasiswa--</option>
+                           @foreach ($user as $u)
+                              <option value="{{ $u->id }}" {{ $mahasiswa->user_id == $u->id ? 'selected' :''}}>{{ $u->name }}</option>
+                           @endforeach
+                        </select>
+                        </div>
+                    </div>           
                     <div class="form-group row">
                         <label for="nim" class="col-sm-2 col-form-label">NPM</label>
                         <div class="col-sm-3">
                             <input type="text" name="npm" id="npm" class="form-control" value="{{ is_null($mahasiswa) ?'' : $mahasiswa->npm}}">
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="nama_mahasiswa" class="col-sm-2 col-form-label">Nama Lengkap</label>
-                        <div class="col-sm-4">
-                            <input type="text" name="nama_mahasiswa" id="nama_mahasiswa" class="form-control" value="{{ is_null($mahasiswa) ?'' : $mahasiswa->nama_mahasiswa}}">
-                        </div>
-                    </div>      
+                    </div>    
                     <div class="form-group row">
                         <label for="tempat_lahir" class="col-sm-2 col-form-label">Tempat Lahir</label>
                         <div class="col-sm-3">
@@ -36,9 +40,9 @@
                     <div class="form-group row">
                         <label for="jurusan" class="col-sm-2 col-form-label">Jenis Kelamin</label>
                         <div class="col-sm-2">
-                            <select name="jenis_kelamin" class="custom_select form-control" id="jenis_kelamin" value="{{ is_null($mahasiswa) ?'' : $mahasiswa->jenis_kelamin}}">
-                              <option value="L">Laki-laki</option>
-                              <option value="P">Perempuan</option>
+                            <select name="jenis_kelamin" class="custom_select form-control" id="jenis_kelamin" value="{{ ($mahasiswa) ?'' : $mahasiswa->jenis_kelamin}}">
+                              <option value="L" {{ $mahasiswa->jenik_kelamin == 'L' ? 'selected' :''}}>Laki-laki</option>
+                              <option value="P" {{ $mahasiswa->jenik_kelamin == 'P' ? 'selected' :''}}>Perempuan</option>
                             </select>
                         </div>
                     </div>

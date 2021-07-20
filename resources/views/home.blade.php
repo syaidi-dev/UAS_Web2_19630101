@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">Welcome in App University</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -13,7 +13,9 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
+                <div class="container">
+                    <img src="../img/gambar.png">
+                </div>
                     You are logged in!
                 </div>
             </div>

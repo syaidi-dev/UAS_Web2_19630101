@@ -7,18 +7,24 @@
             </div>
             <div class="panel-body">
                 <form action="{{ route('simpan.mahasiswa')}}" method="post">
+                    @csrf
                     <div class="form-group row">
-                        <label for="nim" class="col-sm-2 col-form-label">NPM</label>
+                        <label for="" class="col-sm-2 col-form-label">Nama Mahasiswa</label>
                         <div class="col-sm-3">
-                            <input type="text" name="npm" id="npm" class="form-control" required="require">
+                        <select class="form-control" name="user_id" id="user_id">
+                        <option value ="" disable selected >--Pilih Nama Mahasiswa--</option>
+                           @foreach ($user as $u)
+                              <option value="{{ $u->id }}">{{ $u->name }}</option>
+                           @endforeach
+                        </select>
                         </div>
-                    </div>
+                    </div>    
                     <div class="form-group row">
-                        <label for="nama_mahasiswa" class="col-sm-2 col-form-label">Nama Lengkap</label>
-                        <div class="col-sm-4">
-                            <input type="text" name="nama_mahasiswa" id="nama_mahasiswa" class="form-control">
+                        <label for="" class="col-sm-2 col-form-label">NPM</label>
+                        <div class="col-sm-3">
+                            <input type="number" name="npm" id="npm" class="form-control" required="require" maxlength="8">
                         </div>
-                    </div>      
+                    </div>  
                     <div class="form-group row">
                         <label for="tempat_lahir" class="col-sm-2 col-form-label">Tempat Lahir</label>
                         <div class="col-sm-3">
@@ -49,7 +55,7 @@
                     <div class="form-group row">
                         <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
                         <div class="col-sm-10">
-                            <input type="text" name="alamat" id="alamat" class="form-control">
+                            <input type="textarea" name="alamat" id="alamat" class="form-control">
                         </div>
                     </div> 
                     <div class="form-group">
